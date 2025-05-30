@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "AI Meeting Transcriber",
+  "version": "1.0.0",
+  "description": "Tự động ghi chép và tạo biên bản cuộc họp bằng AI",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "desktopCapture",
+    "tabs"
+  ],
+  "host_permissions": [
+    "*://meet.google.com/*",
+    "*://zoom.us/*",
+    "*://*.zoom.us/*",
+    "http://localhost:5000/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://meet.google.com/*",
+        "*://zoom.us/*",
+        "*://*.zoom.us/*"
+      ],
+      "js": ["content/content.js"],
+      "css": ["content/content.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "AI Meeting Transcriber"
+  },
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  }
+}
